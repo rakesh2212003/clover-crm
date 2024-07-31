@@ -1,5 +1,9 @@
-export const buttonClick = {
+export const click = {
     whileTap: { scale: 0.95 },
+}
+
+export const hover = {
+    whileTap: { scale: 1.05 },
 }
 
 export const fadeInOut = {

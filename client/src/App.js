@@ -1,18 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-import AllRoutes from './config/routes/AllRoutes'
-import { MainLoader } from './components'
+import './App.css';
+import { ThemeToggle } from './components'
 
 const App = () => {
-    return (
-        <>
-            <div className='fixed z-50 inset-0 bg-lightOverlay backdrop-blur-md flex items-center justify-center w-full'>
-                <MainLoader />
-            </div>
-            
-            <AllRoutes />
-        </>
-    )
-}
 
-export default App
+    return (
+        <div className='relative min-h-screen flex items-center justify-center bg-bgColor text-textColor transition-all'>
+            <ThemeToggle />
+        </div>
+    );
+};
+
+export default App;
