@@ -6,16 +6,16 @@
 :root {
     --bgColor: #f9fafe;
     --textColor: #000000;
-    --borderColor: #e8e9ed;
-    --iconColor: #7b7d83;
-    --bgIcon: #efefef;
+    --borderColor: #dddfe7;
+    --bgIcon: #cecaca;
+    --iconColor: grayscale(50%);
 }
 
 /* Dark mode colors */
 .dark {
-    --bgColor: #3a3a3a;
+    --bgColor: #18191b;
     --textColor: #ffffff;
     --borderColor: #737982;
-    --iconColor: #fff;
     --bgIcon: #5e5e5e;
+    --iconColor: invert(100%);
 }

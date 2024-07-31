@@ -8,7 +8,6 @@ module.exports = {
                 bgColor: 'var(--bgColor)',
                 textColor: 'var(--textColor)',
                 borderColor: 'var(--borderColor)',
-                iconColor: 'var(--iconColor)',
                 bgIcon: 'var(--bgIcon)',
             },
         },

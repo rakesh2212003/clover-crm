@@ -9,7 +9,6 @@ const ThemeToggle = () => {
         return savedTheme === 'dark';
     });
 
-
     useEffect(() => {
         if (darkMode) {
             document.documentElement.classList.add('dark');
@@ -21,15 +20,13 @@ const ThemeToggle = () => {
     }, [darkMode]);
 
     return (
-        <div className='absolute bottom-5 right-5'>
-            <div className='w-10 h-10 flex justify-center items-center bg-bgIcon rounded-full cursor-pointer'>
-                <img
-                    src={darkMode ? light_mode : dark_mode }
-                    alt="DarkMoode"
-                    onClick={() => setDarkMode(!darkMode)}
-                    className='w-6 grayscale transition-all'
-                />
+        <div className='absolute w-12 h-10 bottom-3 right-0 flex justify-end items-center'>
+            <div className='absolute left-0 w-10 h-full flex justify-center items-center bg-bgIcon rounded-full border border-borderColor cursor-pointer'
+                onClick={() => setDarkMode(!darkMode)}
+            >
+                <img src={darkMode ? light_mode : dark_mode} alt="" className='w-[50%]'/>
             </div>
+            <div className='w-[80%] h-[60%] bg-bgIcon'></div>
         </div>
     )
 }
