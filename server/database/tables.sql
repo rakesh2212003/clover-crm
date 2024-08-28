@@ -45,16 +45,6 @@ CREATE TABLE `users`(
     FOREIGN KEY (`tenant_id`) REFERENCES `tenants`(`id`) ON DELETE CASCADE
 );
 
-CREATE TABLE `emails` (
-    `id` CHAR(36) PRIMARY KEY,
-    `tenant_id` CHAR(36) NOT NULL,
-    `entity_id` CHAR(36) NOT NULL,
-    `entity_name` VARCHAR(255) NOT NULL,
-    `email_address` VARCHAR(100) NOT NULL,
-    `primary` BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (`tenant_id`) REFERENCES `tenants`(`id`) ON DELETE CASCADE
-);
-
 CREATE TABLE `phones` (
     `id` CHAR(36) PRIMARY KEY,
     `tenant_id` CHAR(36) NOT NULL,
