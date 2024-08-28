@@ -1,8 +1,9 @@
--- Active: 1724595132110@@127.0.0.1@3306@clover-crm
-CREATE TABLE `emails` (
+CREATE TABLE `phones` (
     `id` CHAR(36) PRIMARY KEY,
     `tenant_id` CHAR(36) NOT NULL,
-    `email_address` VARCHAR(100) NOT NULL,
+    `phone_number` VARCHAR(100) NOT NULL,
+    `isdc` VARCHAR(10),
+    `cc` VARCHAR(10),
     `primary` BOOLEAN DEFAULT FALSE,
     `verified` BOOLEAN DEFAULT FALSE,
     `created_by` VARCHAR(255),
