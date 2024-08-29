@@ -21,20 +21,20 @@ const Tenant = {
             }
         }
 
-
         try {
             const columns = [
                 ...Object.keys(requiredFields),
                 ...Object.keys(optionalFields)
+                    .filter(key => optionalFields[key] != null)
             ];
             const values = [
                 ...Object.values(requiredFields),
                 ...Object.values(optionalFields)
+                    .filter(value => value != null)
             ];
             const placeholders = columns.map(() => '?').join(', ');
             const sql = `INSERT INTO tenants (${columns.join(', ')}) VALUES (${placeholders})`;
             await connection.execute(sql, values);
-
         } catch (error) {
             throw error;
         } finally {
@@ -44,23 +44,13 @@ const Tenant = {
         }
     },
 
-    // detail: async ({ id }) => {
-    //     const requiredFields = { id };
-
-    //     for (const [key, value] of Object.entries(requiredFields)) {
-    //         if (value == null || value === '') {
-    //             throw new Error(`${key} is required and cannot be null or empty.`);
-    //         }
-    //     }
-
-
-
-    //     const sql = 'SELECT * FROM tenants WHERE id=? and deleted=false';
-    //     const connection = await getConnection();
-    //     const [result] = await connection.execute(sql, [id]);
-    //     connection.end();
-    //     return result;
-    // }
+    detail: async ({ id }) => {
+        const sql = 'SELECT * FROM tenants WHERE id=? and deleted=false';
+        const connection = await getConnection();
+        const [result] = await connection.execute(sql, [id]);
+        connection.end();
+        return result;
+    }
 };
 
 export default Tenant;

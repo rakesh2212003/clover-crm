@@ -1,14 +1,15 @@
 import { v4 as uuid } from 'uuid'
 
-import { Tenant, Email } from "../models/index.js"
+import { Emails, Tenant } from "../models/index.js"
 
 export const signup = async (req, res) => {
     const { 
-        company_name, owner_first_name, owner_last_name, logo, employee_strength, website, description, status, created_by, updated_by, emails
+        company_name, owner_first_name, owner_last_name, logo, employee_strength, website, description, status, created_by, updated_by
     } = req.body;
 
     try {
         const tenant_uuid = uuid();
+        const email_uuid = uuid();
 
         //tenant create
         await Tenant.create({
@@ -26,16 +27,20 @@ export const signup = async (req, res) => {
         });
 
         // email Added
-        for (const email of emails) {
-            await Email.create({
-                id: uuid(),
-                tenant_id: tenant_uuid,
-                email_address: email.email_address,
-                primary: email.primary,
-                verified: email.verified
-            });
-        }
+        // for (const email of emails) {
+        //     await Emails.create({
+        //         id: email_uuid,
+        //         tenant_id: tenant_uuid,
+        //         email_address: email.email_address,
+        //         primary: email.primary,
+        //         verified: email.verified,
+        //         created_by: owner_first_name+" "+owner_last_name,
+        //         updated_by: owner_first_name+" "+owner_last_name,
+
+        //     });
+        // }
         
+
         res.status(201).json({ message: 'Tenant created successfully', tenant_uuid });
 
     } catch (error) {
