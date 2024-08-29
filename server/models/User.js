@@ -1,7 +1,7 @@
 import getConnection from '../config/mysql.js'
 
 const User = {
-    create: () => {
+    create: async() => {
         
     }
 } 
