@@ -1,0 +1,49 @@
+import getConnection from "../config/mysql.js";
+
+const Tenant = {
+    create: async (data) => {
+        const {
+            id, company_name, owner_first_name, owner_last_name, logo, employee_strength, website, description, status, created_by, updated_by
+        } = data;
+
+        const connection = await getConnection();
+        const requiredFields = { id, company_name, owner_first_name, owner_last_name };
+        const optionalFields = { logo, employee_strength, website, description, status, created_by, updated_by };
+        
+        for (const [key, value] of Object.entries(requiredFields)) {
+            if (value == null || value === '') {
+                throw new Error(`${key} is required and cannot be null or empty.`);
+            }
+        }
+
+        for (const key in optionalFields) {
+            if (optionalFields[key] === '') {
+                optionalFields[key] = null;
+            }
+        }
+
+
+        try {
+            const columns = [
+                ...Object.keys(requiredFields),
+                ...Object.keys(optionalFields)
+            ];
+            const values = [
+                ...Object.values(requiredFields),
+                ...Object.values(optionalFields)
+            ];
+            const placeholders = columns.map(() => '?').join(', ');
+            const sql = `INSERT INTO tenants (${columns.join(', ')}) VALUES (${placeholders})`;
+            await connection.execute(sql, values);
+
+        } catch (error) {
+            throw error;
+        } finally {
+            if (connection) {
+                connection.end();
+            }
+        }
+    },
+};
+
+export default Tenant;

@@ -26,20 +26,20 @@ export const signup = async (req, res) => {
         });
 
         // email Added
-        for (const email of emails) {
-            await Email.create({
-                id: uuid(),
-                tenant_id: tenant_uuid,
-                email_address: email.email_address,
-                primary: email.primary,
-                verified: email.verified
-            });
-        }
+        // for (const email of emails) {
+        //     await Email.create({
+        //         id: uuid(),
+        //         tenant_id: tenant_uuid,
+        //         email_address: email.email_address,
+        //         primary: email.primary,
+        //         verified: email.verified
+        //     });
+        // }
         
         res.status(201).json({ message: 'Tenant created successfully', tenant_uuid });
 
     } catch (error) {
-        console.error('Error during signup:', error);
+        console.error('Error during signup:', error.message);
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
