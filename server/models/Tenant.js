@@ -2,49 +2,40 @@ import getConnection from "../config/mysql.js";
 
 const Tenant = {
     create: async (data) => {
-        try {
-            const columns = [
-                'id', 'company_name', 'owner_first_name', 'owner_last_name',
-                'logo', 'employee_strength', 'website', 'description', 
-                'status', 'created_by', 'updated_by'
-            ];
-            const placeholders = columns.map(() => '?').join(', ');
+        const columns = [
+            'id', 'company_name', 'owner_first_name', 'owner_last_name',
+            'logo', 'employee_strength', 'website', 'description',
+            'status', 'created_by', 'updated_by'
+        ];
 
-            const values = columns.map(col => {
-                let value = data[col];
-                return value === '' ? null : value;
-            });
+        const setClause = columns.map(col => `\`${col}\``).join(', ');
+        const values = columns.map(col => data[col] === '' ? null : data[col]);
+        const sql = `INSERT INTO tenants (${setClause}) VALUES (${columns.map(() => '?').join(', ')})`;
 
-            const sql = `INSERT INTO tenants (${columns.join(', ')}) VALUES (${placeholders})`;
-
-            const connection = await getConnection();
-            await connection.execute(sql, values);
-            await connection.end();
-        } catch (error) {
-            console.error('Error creating tenant:', error.message);
-            throw new Error('Failed to create tenant');
-        }
+        //store in database
+        const connection = await getConnection();
+        await connection.execute(sql, values);
+        await connection.end();
     },
+
+    // update: async(data) => {
+    //     const columns = [
+    //         'company_name', 'owner_first_name', 'owner_last_name',
+    //         'logo', 'employee_strength', 'website', 'description',
+    //         'status', 'updated_by'
+    //     ];
+
+    //     const setClause = columns.map(col => `${col} = ?`).join(', ');
+    //     const values = columns.map(col => data[col] === '' ? null : data[col]);
+    //     values.push(data.id);
+    //     console.log(values);
+
+    //     const sql = `UPDATE tenants SET ${setClause} WHERE id = ?`;
+
+    //     const connection = await getConnection();
+    //     await connection.execute(sql, values);
+    //     await connection.end();
+    // }
 };
-
-
-
-// const Tenant = {
-//     create: async (data) => {
-//         const columns = ['id', 'company_name', 'owner_first_name', 'owner_last_name', 'logo', 'employee_strength', 'website', 'description', 'status', 'created_by', 'updated_by'];
-//         const placeholders = columns.map(() => '?').join(', ');
-//         const values = columns.map(col => {
-//             if(data[col] == ''){
-//                 data[col] = null;
-//             }
-//             return data[col];
-//         });
-//         const sql = `INSERT INTO tenants (${columns.join(', ')}) VALUES (${placeholders})`;
-
-//         const connection = await getConnection();
-//         await connection.execute(sql, values);
-//         await connection.end();
-//     },
-// };
 
 export default Tenant;

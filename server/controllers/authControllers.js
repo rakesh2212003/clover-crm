@@ -8,11 +8,10 @@ export const signup = async (req, res) => {
     } = req.body;
 
     try {
-        const tenant_uuid = uuid();
+        const tenant_id = uuid();
 
-        //tenant create
         await Tenant.create({
-            id: tenant_uuid,
+            id: tenant_id,
             company_name: company_name,
             owner_first_name: owner_first_name,
             owner_last_name: owner_last_name,
@@ -24,23 +23,29 @@ export const signup = async (req, res) => {
             created_by: created_by,
             updated_by: updated_by
         });
-
-        // email Added
-        // for (const email of emails) {
-        //     await Email.create({
-        //         id: uuid(),
-        //         tenant_id: tenant_uuid,
-        //         email_address: email.email_address,
-        //         primary: email.primary,
-        //         verified: email.verified
-        //     });
-        // }
         
-        res.status(201).json({ message: 'Tenant created successfully', tenant_uuid });
+        for(const email of emails){
+            await Email.create({
+                id: uuid(),
+                tenant_id: tenant_id,
+                module_id: uuid(),
+                email_address: email.email_address,
+                primary: email.primary,
+                verified: email.verified
+            })
+        }
+        
+        res.status(201).json({
+            success: true,
+            message: 'Tenant created successfully'
+        });
 
     } catch (error) {
         console.error('Error during signup:', error.message);
-        res.status(500).json({ message: 'Internal Server Error' });
+        res.status(500).json({
+            success: false,
+            message: 'Internal Server Error'
+        });
     }
 };
 
