@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid'
 
-import { Tenant, Email } from "../models/index.js"
+import { Tenant } from "../models/index.js"
 
 export const signup = async (req, res) => {
     const { 
@@ -11,7 +11,7 @@ export const signup = async (req, res) => {
         const tenant_id = uuid();
 
         await Tenant.create({
-            id: tenant_id,
+            tenant_id: tenant_id,
             company_name: company_name,
             owner_first_name: owner_first_name,
             owner_last_name: owner_last_name,
@@ -21,19 +21,9 @@ export const signup = async (req, res) => {
             description: description,
             status: status,
             created_by: created_by,
-            updated_by: updated_by
+            updated_by: updated_by,
+            emails: emails
         });
-        
-        for(const email of emails){
-            await Email.create({
-                id: uuid(),
-                tenant_id: tenant_id,
-                module_id: uuid(),
-                email_address: email.email_address,
-                primary: email.primary,
-                verified: email.verified
-            })
-        }
         
         res.status(201).json({
             success: true,

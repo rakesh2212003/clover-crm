@@ -1,6 +1,6 @@
--- Active: 1724595132110@@127.0.0.1@3306@clover-crm
+-- Active: 1724734957509@@127.0.0.1@3306@clover-crm
 CREATE TABLE `tenants`(
-    `id` CHAR(36) PRIMARY KEY,
+    `tenant_id` CHAR(36) PRIMARY KEY,
     `company_name` VARCHAR(255) NOT NULL,
     `owner_first_name` VARCHAR(100) NOT NULL,
     `owner_last_name` VARCHAR(100) NOT NULL,

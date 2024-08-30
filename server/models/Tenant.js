@@ -1,9 +1,12 @@
+import { v4 as uuid } from 'uuid'
+
 import getConnection from "../config/mysql.js";
+import { Email } from '../models/index.js'
 
 const Tenant = {
     create: async (data) => {
         const columns = [
-            'id', 'company_name', 'owner_first_name', 'owner_last_name',
+            'tenant_id', 'company_name', 'owner_first_name', 'owner_last_name',
             'logo', 'employee_strength', 'website', 'description',
             'status', 'created_by', 'updated_by'
         ];
@@ -15,6 +18,16 @@ const Tenant = {
         //store in database
         const connection = await getConnection();
         await connection.execute(sql, values);
+        for(const email of data.emails){
+            await Email.create({
+                email_id: uuid(),
+                tenant_id: data.tenant_id,
+                module_id: uuid(),
+                email_address: email.email_address,
+                primary: email.primary,
+                verified: email.verified
+            })
+        }
         await connection.end();
     },
 

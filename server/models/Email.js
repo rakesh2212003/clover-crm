@@ -3,7 +3,7 @@ import getConnection from "../config/mysql.js";
 const Email = {
     create: async (data) => {
         const columns = [
-            'id', 'tenant_id', 'module_id', 'email_address',
+            'email_id', 'tenant_id', 'module_id', 'email_address',
             'primary', 'verified'
         ];
 
