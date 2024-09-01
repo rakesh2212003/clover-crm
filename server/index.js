@@ -14,6 +14,7 @@ app.use(express.json({ limit: '30mb', strict: true }));
 app.use(jsonMiddleware);
 
 /* routes */
+app.use('/static', sta);
 app.use('/auth', authRoutes);
 
 

@@ -1,54 +1,70 @@
-import { v4 as uuid } from 'uuid'
-
 import getConnection from "../config/mysql.js";
-import { Email } from '../models/index.js'
 
 const Tenant = {
     create: async (data) => {
-        const columns = [
-            'tenant_id', 'company_name', 'owner_first_name', 'owner_last_name',
-            'logo', 'employee_strength', 'website', 'description',
-            'status', 'created_by', 'updated_by'
-        ];
+        let columns = [];
+        let values = [];
 
-        const setClause = columns.map(col => `\`${col}\``).join(', ');
-        const values = columns.map(col => data[col] === '' ? null : data[col]);
-        const sql = `INSERT INTO tenants (${setClause}) VALUES (${columns.map(() => '?').join(', ')})`;
+        for (const [key, value] of Object.entries(data)) {
+            columns.push(`\`${key}\``);
+            values.push(value);
+        }
 
-        //store in database
+        const columnNames = columns.join(', ');
+        const placeholders = values.map(() => '?').join(', ');
+        const sql = `INSERT INTO tenants (${columnNames}) VALUES (${placeholders})`;
+
+        //Execute
         const connection = await getConnection();
         await connection.execute(sql, values);
-        for(const email of data.emails){
-            await Email.create({
-                email_id: uuid(),
-                tenant_id: data.tenant_id,
-                module_id: uuid(),
-                email_address: email.email_address,
-                primary: email.primary,
-                verified: email.verified
-            })
-        }
         await connection.end();
     },
 
-    // update: async(data) => {
-    //     const columns = [
-    //         'company_name', 'owner_first_name', 'owner_last_name',
-    //         'logo', 'employee_strength', 'website', 'description',
-    //         'status', 'updated_by'
-    //     ];
+    detail: async ({ tenant_id, limit = 10, offset = 0 }) => {
+        const sql = `SELECT * FROM tenants WHERE \`tenant_id\` = ? AND \`deleted\` = false LIMIT ? OFFSET ?`;
 
-    //     const setClause = columns.map(col => `${col} = ?`).join(', ');
-    //     const values = columns.map(col => data[col] === '' ? null : data[col]);
-    //     values.push(data.id);
-    //     console.log(values);
+        // Execute
+        const connection = await getConnection();
+        const [rows] = await connection.execute(sql, [tenant_id, limit, offset]);
+        await connection.end();
+        return rows;
+    },
 
-    //     const sql = `UPDATE tenants SET ${setClause} WHERE id = ?`;
+    update: async (data) => {
+        let columns = [];
+        let values = [];
 
-    //     const connection = await getConnection();
-    //     await connection.execute(sql, values);
-    //     await connection.end();
-    // }
+        for (const [key, value] of Object.entries(data)) {
+            if (key !== 'tenant_id') {
+                columns.push(`\`${key}\` = ?`);
+                values.push(value);
+            }
+        }
+
+        if (!data.tenant_id) {
+            throw new Error('tenant_id is required for updating');
+        }
+
+        const setClause = columns.join(', ');
+        const sql = `UPDATE tenants SET ${setClause} WHERE \`tenant_id\` = ?`;
+
+        // Store in database
+        const connection = await getConnection();
+        await connection.execute(sql, [...values, data.tenant_id]);
+        await connection.end();
+    },
+
+    delete: async (tenant_id, softDelete = true) => {
+        let sql;
+        if (softDelete) {
+            sql = `UPDATE tenants SET \`deleted\` = true WHERE \`tenant_id\` = ?`;
+        } else {
+            sql = `DELETE FROM tenants WHERE \`tenant_id\` = ?`;
+        }
+        const connection = await getConnection();
+        await connection.execute(sql, [tenant_id]);
+        await connection.end();
+    }
 };
 
 export default Tenant;

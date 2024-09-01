@@ -2,16 +2,19 @@ import getConnection from "../config/mysql.js";
 
 const Email = {
     create: async (data) => {
-        const columns = [
-            'email_id', 'tenant_id', 'module_id', 'email_address',
-            'primary', 'verified'
-        ];
+        let columns = [];
+        let values = [];
 
-        const setClause = columns.map(col => `\`${col}\``).join(', ');
-        const values = columns.map(col => data[col] === '' ? null : data[col]);
-        const sql = `INSERT INTO emails (${setClause}) VALUES (${columns.map(() => '?').join(', ')})`;
+        for (const [key, value] of Object.entries(data)) {
+            columns.push(`\`${key}\``);
+            values.push(value);
+        }
 
-        //store in database
+        const columnNames = columns.join(', ');
+        const placeholders = values.map(() => '?').join(', ');
+        const sql = `INSERT INTO emails (${columnNames}) VALUES (${placeholders})`;
+
+        //Execute
         const connection = await getConnection();
         await connection.execute(sql, values);
         await connection.end();
