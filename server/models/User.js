@@ -1,24 +1,29 @@
-import getConnection from "../config/mysql.js";
-
 const User = {
     create: async (data) => {
-        let columns = [];
-        let values = [];
+        const mandatoryFields = ['id', 'tenant_id', 'username', 'password', 'first_name', 'last_name', 'created_by', 'updated_by'];
 
-        for (const [key, value] of Object.entries(data)) {
-            columns.push(`\`${key}\``);
-            values.push(value);
+        for (const field of mandatoryFields) {
+            if (data[field] === undefined) {
+                throw new Error(`Missing mandatory fields`);
+            }
         }
 
-        const columnNames = columns.join(', ');
-        const placeholders = values.map(() => '?').join(', ');
-        const sql = `INSERT INTO users (${columnNames}) VALUES (${placeholders})`;
+        const columns = [];
+        const placeholders = [];
+        const values = [];
 
-        //Execute
-        const connection = await getConnection();
-        await connection.execute(sql, values);
-        await connection.end();
+        for (const [key, value] of Object.entries(data)) {
+            if (value !== undefined && value !== '') {
+                columns.push(key);
+                placeholders.push('?');
+                values.push(value);
+            }
+        }
+
+        const sql = `INSERT INTO users (${columns.join(', ')}) VALUES (${placeholders.join(', ')})`;
+
+        return { sql, values };
     },
-};
+}
 
 export default User;

@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+
 import AllRoutes from './config/AllRoutes'
 
 const App = () => {
@@ -6,7 +7,7 @@ const App = () => {
         <div className='w-screen min-h-screen h-auto flex justify-center items-center'>
             <AllRoutes />
         </div>
-    );
-};
+    )
+}
 
-export default App;
+export default App

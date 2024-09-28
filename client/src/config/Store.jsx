@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import rootReducer from '../context/reducers'
+// import rootReducer from '../context/reducers'
 
-const store = configureStore({
-    reducer: rootReducer,
-    devTools: process.env.PROJECT_ENV,
+const Store = configureStore({
+    // reducer: rootReducer,
+    devTools: process.env.REACT_APP_PROJECT_ENV === 'development',
 })
 
-export default store;
+export default Store;

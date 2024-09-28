@@ -1,202 +1,204 @@
+
 CREATE TABLE `country_codes` (
-    `id` CHAR(36) NOT NULL PRIMARY KEY DEFAULT (UUID()),
+    `id` CHAR(36) NOT NULL PRIMARY KEY,
     `country_name` VARCHAR(100) NOT NULL,
     `country_code` VARCHAR(10) NOT NULL
 );
 
-INSERT INTO `country_codes` (`country_name`, `country_code`) VALUES('Afghanistan', '+93');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Albania', '+355');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Algeria', '+213');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Andorra', '+376');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Angola', '+244');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Antigua and Barbuda', '+1-268');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Argentina', '+54');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Armenia', '+374');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Australia', '+61');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Austria', '+43');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Azerbaijan', '+994');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Bahamas', '+1-242');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Bahrain', '+973');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Bangladesh', '+880');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Barbados', '+1-246');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Belarus', '+375');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Belgium', '+32');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Belize', '+501');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Benin', '+229');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Bhutan', '+975');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Bolivia', '+591');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Bosnia and Herzegovina', '+387');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Botswana', '+267');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Brazil', '+55');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Brunei', '+673');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Bulgaria', '+359');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Burkina Faso', '+226');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Burundi', '+257');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Cabo Verde', '+238');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Cambodia', '+855');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Cameroon', '+237');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Canada', '+1');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Central African Republic', '+236');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Chad', '+235');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Chile', '+56');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('China', '+86');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Colombia', '+57');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Comoros', '+269');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Congo, Democratic Republic of the', '+243');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Congo, Republic of the', '+242');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Costa Rica', '+506');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Croatia', '+385');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Cuba', '+53');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Cyprus', '+357');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Czech Republic', '+420');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Denmark', '+45');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Djibouti', '+253');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Dominica', '+1-767');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Dominican Republic', '+1-809');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('East Timor', '+670');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Ecuador', '+593');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Egypt', '+20');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('El Salvador', '+503');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Equatorial Guinea', '+240');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Eritrea', '+291');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Estonia', '+372');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Eswatini', '+268');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Ethiopia', '+251');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Fiji', '+679');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Finland', '+358');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('France', '+33');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Gabon', '+241');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Gambia', '+220');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Georgia', '+995');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Germany', '+49');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Ghana', '+233');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Greece', '+30');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Grenada', '+1-473');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Guatemala', '+502');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Guinea', '+224');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Guinea-Bissau', '+245');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Guyana', '+592');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Haiti', '+509');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Honduras', '+504');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Hungary', '+36');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Iceland', '+354');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('India', '+91');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Indonesia', '+62');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Iran', '+98');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Iraq', '+964');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Ireland', '+353');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Israel', '+972');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Italy', '+39');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Jamaica', '+1-876');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Japan', '+81');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Jordan', '+962');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Kazakhstan', '+7');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Kenya', '+254');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Kiribati', '+686');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Korea, North', '+850');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Korea, South', '+82');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Kosovo', '+383');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Kuwait', '+965');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Kyrgyzstan', '+996');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Laos', '+856');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Latvia', '+371');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Lebanon', '+961');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Lesotho', '+266');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Liberia', '+231');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Libya', '+218');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Liechtenstein', '+423');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Lithuania', '+370');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Luxembourg', '+352');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Madagascar', '+261');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Malawi', '+265');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Malaysia', '+60');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Maldives', '+960');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Mali', '+223');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Malta', '+356');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Marshall Islands', '+692');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Mauritania', '+222');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Mauritius', '+230');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Mexico', '+52');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Micronesia', '+691');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Moldova', '+373');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Monaco', '+377');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Mongolia', '+976');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Montenegro', '+382');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Morocco', '+212');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Mozambique', '+258');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Myanmar', '+95');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Namibia', '+264');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Nauru', '+674');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Nepal', '+977');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Netherlands', '+31');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('New Zealand', '+64');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Nicaragua', '+505');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Niger', '+227');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Nigeria', '+234');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('North Macedonia', '+389');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Norway', '+47');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Oman', '+968');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Pakistan', '+92');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Palau', '+680');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Palestine', '+970');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Panama', '+507');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Papua New Guinea', '+675');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Paraguay', '+595');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Peru', '+51');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Philippines', '+63');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Poland', '+48');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Portugal', '+351');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Qatar', '+974');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Romania', '+40');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Russia', '+7');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Rwanda', '+250');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Saint Kitts and Nevis', '+1-869');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Saint Lucia', '+1-758');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Saint Vincent and the Grenadines', '+1-784');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Samoa', '+685');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('San Marino', '+378');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Sao Tome and Principe', '+239');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Saudi Arabia', '+966');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Senegal', '+221');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Serbia', '+381');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Seychelles', '+248');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Sierra Leone', '+232');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Singapore', '+65');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Slovakia', '+421');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Slovenia', '+386');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Solomon Islands', '+677');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Somalia', '+252');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('South Africa', '+27');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('South Sudan', '+211');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Spain', '+34');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Sri Lanka', '+94');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Sudan', '+249');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Suriname', '+597');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Sweden', '+46');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Switzerland', '+41');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Syria', '+963');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Taiwan', '+886');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Tajikistan', '+992');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Tanzania', '+255');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Thailand', '+66');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Togo', '+228');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Tonga', '+676');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Trinidad and Tobago', '+1-868');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Tunisia', '+216');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Turkey', '+90');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Turkmenistan', '+993');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Tuvalu', '+688');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Uganda', '+256');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Ukraine', '+380');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('United Arab Emirates', '+971');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('United Kingdom', '+44');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('United States', '+1');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Uruguay', '+598');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Uzbekistan', '+998');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Vanuatu', '+678');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Vatican City', '+379');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Venezuela', '+58');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Vietnam', '+84');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Yemen', '+967');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Zambia', '+260');
-INSERT INTO `country_codes` (`country_name`, `country_code`) Values('Zimbabwe', '+263');
+INSERT INTO `country_codes` (`id`, `country_name`, `country_code`) VALUES
+    (UUID(), 'Afghanistan', '+93'),
+    (UUID(), 'Albania', '+355'),
+    (UUID(), 'Algeria', '+213'),
+    (UUID(), 'Andorra', '+376'),
+    (UUID(), 'Angola', '+244'),
+    (UUID(), 'Antigua and Barbuda', '+1-268'),
+    (UUID(), 'Argentina', '+54'),
+    (UUID(), 'Armenia', '+374'),
+    (UUID(), 'Australia', '+61'),
+    (UUID(), 'Austria', '+43'),
+    (UUID(), 'Azerbaijan', '+994'),
+    (UUID(), 'Bahamas', '+1-242'),
+    (UUID(), 'Bahrain', '+973'),
+    (UUID(), 'Bangladesh', '+880'),
+    (UUID(), 'Barbados', '+1-246'),
+    (UUID(), 'Belarus', '+375'),
+    (UUID(), 'Belgium', '+32'),
+    (UUID(), 'Belize', '+501'),
+    (UUID(), 'Benin', '+229'),
+    (UUID(), 'Bhutan', '+975'),
+    (UUID(), 'Bolivia', '+591'),
+    (UUID(), 'Bosnia and Herzegovina', '+387'),
+    (UUID(), 'Botswana', '+267'),
+    (UUID(), 'Brazil', '+55'),
+    (UUID(), 'Brunei', '+673'),
+    (UUID(), 'Bulgaria', '+359'),
+    (UUID(), 'Burkina Faso', '+226'),
+    (UUID(), 'Burundi', '+257'),
+    (UUID(), 'Cabo Verde', '+238'),
+    (UUID(), 'Cambodia', '+855'),
+    (UUID(), 'Cameroon', '+237'),
+    (UUID(), 'Canada', '+1'),
+    (UUID(), 'Central African Republic', '+236'),
+    (UUID(), 'Chad', '+235'),
+    (UUID(), 'Chile', '+56'),
+    (UUID(), 'China', '+86'),
+    (UUID(), 'Colombia', '+57'),
+    (UUID(), 'Comoros', '+269'),
+    (UUID(), 'Congo, Democratic Republic of the', '+243'),
+    (UUID(), 'Congo, Republic of the', '+242'),
+    (UUID(), 'Costa Rica', '+506'),
+    (UUID(), 'Croatia', '+385'),
+    (UUID(), 'Cuba', '+53'),
+    (UUID(), 'Cyprus', '+357'),
+    (UUID(), 'Czech Republic', '+420'),
+    (UUID(), 'Denmark', '+45'),
+    (UUID(), 'Djibouti', '+253'),
+    (UUID(), 'Dominica', '+1-767'),
+    (UUID(), 'Dominican Republic', '+1-809'),
+    (UUID(), 'East Timor', '+670'),
+    (UUID(), 'Ecuador', '+593'),
+    (UUID(), 'Egypt', '+20'),
+    (UUID(), 'El Salvador', '+503'),
+    (UUID(), 'Equatorial Guinea', '+240'),
+    (UUID(), 'Eritrea', '+291'),
+    (UUID(), 'Estonia', '+372'),
+    (UUID(), 'Eswatini', '+268'),
+    (UUID(), 'Ethiopia', '+251'),
+    (UUID(), 'Fiji', '+679'),
+    (UUID(), 'Finland', '+358'),
+    (UUID(), 'France', '+33'),
+    (UUID(), 'Gabon', '+241'),
+    (UUID(), 'Gambia', '+220'),
+    (UUID(), 'Georgia', '+995'),
+    (UUID(), 'Germany', '+49'),
+    (UUID(), 'Ghana', '+233'),
+    (UUID(), 'Greece', '+30'),
+    (UUID(), 'Grenada', '+1-473'),
+    (UUID(), 'Guatemala', '+502'),
+    (UUID(), 'Guinea', '+224'),
+    (UUID(), 'Guinea-Bissau', '+245'),
+    (UUID(), 'Guyana', '+592'),
+    (UUID(), 'Haiti', '+509'),
+    (UUID(), 'Honduras', '+504'),
+    (UUID(), 'Hungary', '+36'),
+    (UUID(), 'Iceland', '+354'),
+    (UUID(), 'India', '+91'),
+    (UUID(), 'Indonesia', '+62'),
+    (UUID(), 'Iran', '+98'),
+    (UUID(), 'Iraq', '+964'),
+    (UUID(), 'Ireland', '+353'),
+    (UUID(), 'Israel', '+972'),
+    (UUID(), 'Italy', '+39'),
+    (UUID(), 'Jamaica', '+1-876'),
+    (UUID(), 'Japan', '+81'),
+    (UUID(), 'Jordan', '+962'),
+    (UUID(), 'Kazakhstan', '+7'),
+    (UUID(), 'Kenya', '+254'),
+    (UUID(), 'Kiribati', '+686'),
+    (UUID(), 'Korea, North', '+850'),
+    (UUID(), 'Korea, South', '+82'),
+    (UUID(), 'Kosovo', '+383'),
+    (UUID(), 'Kuwait', '+965'),
+    (UUID(), 'Kyrgyzstan', '+996'),
+    (UUID(), 'Laos', '+856'),
+    (UUID(), 'Latvia', '+371'),
+    (UUID(), 'Lebanon', '+961'),
+    (UUID(), 'Lesotho', '+266'),
+    (UUID(), 'Liberia', '+231'),
+    (UUID(), 'Libya', '+218'),
+    (UUID(), 'Liechtenstein', '+423'),
+    (UUID(), 'Lithuania', '+370'),
+    (UUID(), 'Luxembourg', '+352'),
+    (UUID(), 'Madagascar', '+261'),
+    (UUID(), 'Malawi', '+265'),
+    (UUID(), 'Malaysia', '+60'),
+    (UUID(), 'Maldives', '+960'),
+    (UUID(), 'Mali', '+223'),
+    (UUID(), 'Malta', '+356'),
+    (UUID(), 'Marshall Islands', '+692'),
+    (UUID(), 'Mauritania', '+222'),
+    (UUID(), 'Mauritius', '+230'),
+    (UUID(), 'Mexico', '+52'),
+    (UUID(), 'Micronesia', '+691'),
+    (UUID(), 'Moldova', '+373'),
+    (UUID(), 'Monaco', '+377'),
+    (UUID(), 'Mongolia', '+976'),
+    (UUID(), 'Montenegro', '+382'),
+    (UUID(), 'Morocco', '+212'),
+    (UUID(), 'Mozambique', '+258'),
+    (UUID(), 'Myanmar', '+95'),
+    (UUID(), 'Namibia', '+264'),
+    (UUID(), 'Nauru', '+674'),
+    (UUID(), 'Nepal', '+977'),
+    (UUID(), 'Netherlands', '+31'),
+    (UUID(), 'New Zealand', '+64'),
+    (UUID(), 'Nicaragua', '+505'),
+    (UUID(), 'Niger', '+227'),
+    (UUID(), 'Nigeria', '+234'),
+    (UUID(), 'North Macedonia', '+389'),
+    (UUID(), 'Norway', '+47'),
+    (UUID(), 'Oman', '+968'),
+    (UUID(), 'Pakistan', '+92'),
+    (UUID(), 'Palau', '+680'),
+    (UUID(), 'Palestine', '+970'),
+    (UUID(), 'Panama', '+507'),
+    (UUID(), 'Papua New Guinea', '+675'),
+    (UUID(), 'Paraguay', '+595'),
+    (UUID(), 'Peru', '+51'),
+    (UUID(), 'Philippines', '+63'),
+    (UUID(), 'Poland', '+48'),
+    (UUID(), 'Portugal', '+351'),
+    (UUID(), 'Qatar', '+974'),
+    (UUID(), 'Romania', '+40'),
+    (UUID(), 'Russia', '+7'),
+    (UUID(), 'Rwanda', '+250'),
+    (UUID(), 'Saint Kitts and Nevis', '+1-869'),
+    (UUID(), 'Saint Lucia', '+1-758'),
+    (UUID(), 'Saint Vincent and the Grenadines', '+1-784'),
+    (UUID(), 'Samoa', '+685'),
+    (UUID(), 'San Marino', '+378'),
+    (UUID(), 'Sao Tome and Principe', '+239'),
+    (UUID(), 'Saudi Arabia', '+966'),
+    (UUID(), 'Senegal', '+221'),
+    (UUID(), 'Serbia', '+381'),
+    (UUID(), 'Seychelles', '+248'),
+    (UUID(), 'Sierra Leone', '+232'),
+    (UUID(), 'Singapore', '+65'),
+    (UUID(), 'Slovakia', '+421'),
+    (UUID(), 'Slovenia', '+386'),
+    (UUID(), 'Solomon Islands', '+677'),
+    (UUID(), 'Somalia', '+252'),
+    (UUID(), 'South Africa', '+27'),
+    (UUID(), 'South Sudan', '+211'),
+    (UUID(), 'Spain', '+34'),
+    (UUID(), 'Sri Lanka', '+94'),
+    (UUID(), 'Sudan', '+249'),
+    (UUID(), 'Suriname', '+597'),
+    (UUID(), 'Sweden', '+46'),
+    (UUID(), 'Switzerland', '+41'),
+    (UUID(), 'Syria', '+963'),
+    (UUID(), 'Taiwan', '+886'),
+    (UUID(), 'Tajikistan', '+992'),
+    (UUID(), 'Tanzania', '+255'),
+    (UUID(), 'Thailand', '+66'),
+    (UUID(), 'Togo', '+228'),
+    (UUID(), 'Tonga', '+676'),
+    (UUID(), 'Trinidad and Tobago', '+1-868'),
+    (UUID(), 'Tunisia', '+216'),
+    (UUID(), 'Turkey', '+90'),
+    (UUID(), 'Turkmenistan', '+993'),
+    (UUID(), 'Tuvalu', '+688'),
+    (UUID(), 'Uganda', '+256'),
+    (UUID(), 'Ukraine', '+380'),
+    (UUID(), 'United Arab Emirates', '+971'),
+    (UUID(), 'United Kingdom', '+44'),
+    (UUID(), 'United States', '+1'),
+    (UUID(), 'Uruguay', '+598'),
+    (UUID(), 'Uzbekistan', '+998'),
+    (UUID(), 'Vanuatu', '+678'),
+    (UUID(), 'Vatican City', '+379'),
+    (UUID(), 'Venezuela', '+58'),
+    (UUID(), 'Vietnam', '+84'),
+    (UUID(), 'Yemen', '+967'),
+    (UUID(), 'Zambia', '+260'),
+    (UUID(), 'Zimbabwe', '+263');

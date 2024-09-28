@@ -1,22 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter as Router } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router } from 'react-router-dom'
 
 import './index.css';
 import App from './App';
-import Store from './config/Store'
+// import Store from './config/Store'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <AnimatePresence>
-            <Provider store={ Store }>
-                <Router>
+            <Router>
+                {/* <Provider store={Store}> */}
                     <App />
-                </Router>
-            </Provider>
+                {/* </Provider> */}
+            </Router>
         </AnimatePresence>
     </React.StrictMode>
 );

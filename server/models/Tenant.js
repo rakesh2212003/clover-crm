@@ -1,70 +1,29 @@
-import getConnection from "../config/mysql.js";
-
 const Tenant = {
     create: async (data) => {
-        let columns = [];
-        let values = [];
+        const mandatoryFields = ['id', 'company_name', 'owner_first_name', 'owner_last_name', 'created_by', 'updated_by'];
 
-        for (const [key, value] of Object.entries(data)) {
-            columns.push(`\`${key}\``);
-            values.push(value);
+        for (const field of mandatoryFields) {
+            if (data[field] === undefined) {
+                throw new Error(`Missing mandatory fields ${field}`);
+            }
         }
 
-        const columnNames = columns.join(', ');
-        const placeholders = values.map(() => '?').join(', ');
-        const sql = `INSERT INTO tenants (${columnNames}) VALUES (${placeholders})`;
-
-        //Execute
-        const connection = await getConnection();
-        await connection.execute(sql, values);
-        await connection.end();
-    },
-
-    detail: async ({ tenant_id, limit = 10, offset = 0 }) => {
-        const sql = `SELECT * FROM tenants WHERE \`tenant_id\` = ? AND \`deleted\` = false LIMIT ? OFFSET ?`;
-
-        // Execute
-        const connection = await getConnection();
-        const [rows] = await connection.execute(sql, [tenant_id, limit, offset]);
-        await connection.end();
-        return rows;
-    },
-
-    update: async (data) => {
-        let columns = [];
-        let values = [];
+        const columns = [];
+        const placeholders = [];
+        const values = [];
 
         for (const [key, value] of Object.entries(data)) {
-            if (key !== 'tenant_id') {
-                columns.push(`\`${key}\` = ?`);
+            if (value !== undefined && value !== '') {
+                columns.push(key);
+                placeholders.push('?');
                 values.push(value);
             }
         }
 
-        if (!data.tenant_id) {
-            throw new Error('tenant_id is required for updating');
-        }
+        const sql = `INSERT INTO tenants (${columns.join(', ')}) VALUES (${placeholders.join(', ')})`;
 
-        const setClause = columns.join(', ');
-        const sql = `UPDATE tenants SET ${setClause} WHERE \`tenant_id\` = ?`;
-
-        // Store in database
-        const connection = await getConnection();
-        await connection.execute(sql, [...values, data.tenant_id]);
-        await connection.end();
+        return { sql, values };
     },
-
-    delete: async (tenant_id, softDelete = true) => {
-        let sql;
-        if (softDelete) {
-            sql = `UPDATE tenants SET \`deleted\` = true WHERE \`tenant_id\` = ?`;
-        } else {
-            sql = `DELETE FROM tenants WHERE \`tenant_id\` = ?`;
-        }
-        const connection = await getConnection();
-        await connection.execute(sql, [tenant_id]);
-        await connection.end();
-    }
-};
+}
 
 export default Tenant;
