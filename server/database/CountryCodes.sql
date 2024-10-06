@@ -5,7 +5,9 @@ CREATE TABLE `country_codes` (
     `country_code` VARCHAR(10) NOT NULL
 );
 
-INSERT INTO `country_codes` (`id`, `country_name`, `country_code`) VALUES
+INSERT INTO 
+    `country_codes` (`id`, `country_name`, `country_code`)
+VALUES
     (UUID(), 'Afghanistan', '+93'),
     (UUID(), 'Albania', '+355'),
     (UUID(), 'Algeria', '+213'),

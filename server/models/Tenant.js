@@ -1,29 +1,36 @@
-const Tenant = {
-    create: async (data) => {
-        const mandatoryFields = ['id', 'company_name', 'owner_first_name', 'owner_last_name', 'created_by', 'updated_by'];
+class Tenant {
 
-        for (const field of mandatoryFields) {
-            if (data[field] === undefined) {
-                throw new Error(`Missing mandatory fields ${field}`);
+    #connection;
+
+    constructor(connection) {
+        this.#connection = connection;
+    }
+
+    #validateMandatoryFields(fields) {
+        for (const field of fields) {
+            if (!field || typeof field !== 'string' || !field.trim()) {
+                throw new Error("All mandatory fields must be provided and cannot be empty.");
             }
         }
+    }
 
-        const columns = [];
-        const placeholders = [];
-        const values = [];
+    create = async ({ id, company_name, owner_firstname, owner_lastname, employee_strength, industry, website = null, description = null, avatar = null, created_by, updated_by, status = true }) => {
+        try {
+            this.#validateMandatoryFields([id, company_name, owner_firstname, owner_lastname, employee_strength, industry, created_by, updated_by]);
 
-        for (const [key, value] of Object.entries(data)) {
-            if (value !== undefined && value !== '') {
-                columns.push(key);
-                placeholders.push('?');
-                values.push(value);
-            }
+            const query = `
+                INSERT INTO Tenants (id, company_name, owner_firstname, owner_lastname, employee_strength, industry, website, description, avatar, created_by, updated_by, status)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
+            `;
+
+            await this.#connection.execute(query, [
+                id, company_name, owner_firstname, owner_lastname, employee_strength, industry, website, description, avatar, created_by, updated_by, status
+            ]);
+
+        } catch (error) {
+            throw new Error(`Tenant.create(): ${error.message}`);
         }
-
-        const sql = `INSERT INTO tenants (${columns.join(', ')}) VALUES (${placeholders.join(', ')})`;
-
-        return { sql, values };
-    },
+    }
 }
 
 export default Tenant;
